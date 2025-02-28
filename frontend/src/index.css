@@ -98,3 +98,17 @@ button:focus-visible {
 .question_answers li label {
   cursor: pointer;
 }
+
+.question_status {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 1rem;
+}
+
+.question_status--correct {
+  color: greenyellow;
+}
+
+.question_status--incorrect {
+  color: indianred;
+}

@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 function App() {
     const [questionData, setQuestionData] = useState('');
     const [answers, setAnswers] = useState([[]]);
+    const [status, setStatus] = useState('not_set');
 
     const fetchAsync = async (url, method, body) => {
         return await fetch(url, {method, body}).then((response) => {
@@ -34,8 +35,13 @@ function App() {
         const formData = new FormData();
         formData.append("question", questionData.question);
 
-        const data = await fetchAsync('http://localhost:8080/checkanswer', 'POST', formData)
-        console.log('the data is', data); // todo: not correct json
+        try {
+            const data = await fetchAsync('http://localhost:8080/checkanswer', 'POST', formData)
+            if(data.correct_answer === answer.text) setStatus('correct')
+            else setStatus('wrong')
+        } catch {
+            setQuestionData('error')
+        }
     }
 
     return (
@@ -64,6 +70,12 @@ function App() {
                           </li>
                       )}
                   </ul>
+                  {status !== 'not_set' &&
+                      <div class="question_status">
+                          {status === 'correct' && <span class="question_status--correct">✅ Correct !</span>}
+                          {status === 'wrong' && <span class="question_status--incorrect">❌ Wrong !</span>}
+                      </div>
+                  }
                   <button onClick={() => location.reload()}>Next question</button>
               </div>
           }
