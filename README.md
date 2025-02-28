@@ -18,7 +18,7 @@ assignment: [https://www.quad.team/assignment](https://www.quad.team/assignment)
 - Open Maven tab and Sync/Reload all Maven projects
 - Run locally (available on [localhost:8080](localhost:8080)):
 ```bash
-cd /api
+cd api
 ./mvnw spring-boot:run
 ```
 
@@ -27,3 +27,17 @@ cd /api
 - Right click src/main/java folder 'run tests' and Intellij creates a runconfig for you
 
 
+## Frontend
+
+### Run locally
+
+- Install nodejs v22.5.1. or higher
+- Install dependencies
+```bash
+cd frontend
+npm install
+```
+- Run app
+```bash
+npm run dev 
+```

@@ -26,6 +26,7 @@ public class apiController {
     @Autowired
     TriviaRepository repository;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/question")
     public ResponseEntity<String> question() throws IOException, InterruptedException {
         try {
@@ -56,6 +57,7 @@ public class apiController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/checkanswer")
     public ResponseEntity<String> checkanswer(@RequestParam(name = "question", required = true) String question) throws IOException, InterruptedException {
         try {
