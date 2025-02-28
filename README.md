@@ -1,5 +1,7 @@
 # Trivia
 
+assignment: [https://www.quad.team/assignment](https://www.quad.team/assignment)
+
 ## Get started
 
 ### When using Intellij IDEA
