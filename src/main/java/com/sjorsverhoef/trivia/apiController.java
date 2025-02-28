@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus;
 
 
 @RestController
-public class HelloController {
+public class apiController {
 
     @GetMapping("/questions")
     public ResponseEntity<String> questions() throws IOException, InterruptedException {
