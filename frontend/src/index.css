@@ -93,3 +93,8 @@ button:focus-visible {
 .question_answers li input {
   margin: 0 .5rem 0 0;
 }
+
+.question_answers li input,
+.question_answers li label {
+  cursor: pointer;
+}

@@ -5,8 +5,8 @@ function App() {
     const [questionData, setQuestionData] = useState('');
     const [answers, setAnswers] = useState([[]]);
 
-    const fetchAsync = async (url) => {
-        return await fetch(url, {method: 'GET'}).then((response) => {
+    const fetchAsync = async (url, method, body) => {
+        return await fetch(url, {method, body}).then((response) => {
             return response.json()
         })
     }
@@ -14,14 +14,29 @@ function App() {
     useEffect(() => {
         if (questionData === '') {
             setQuestionData('loading')
-            fetchAsync('http://localhost:8080/question')
+            fetchAsync('http://localhost:8080/question', 'GET')
                 .then((response) => {
                     setQuestionData(response);
-                    setAnswers(response.incorrect_answers)
+                    setAnswers(response.incorrect_answers.map((answer) => ({text: answer, checked: false})))
                 })
                 .catch(() => setQuestionData('error'))
         }
     }, [])
+
+    const validate = async (answer, index) => {
+        const checkedAnswers = answers;
+        checkedAnswers.map((answer) => answer.checked = false);
+        checkedAnswers[index].checked = true;
+        setAnswers(checkedAnswers); // TODO: doesnt update jsx for some reason?
+
+        console.log('the question: ', questionData.question)
+
+        const formData = new FormData();
+        formData.append("question", questionData.question);
+
+        const data = await fetchAsync('http://localhost:8080/checkanswer', 'POST', formData)
+        console.log('the data is', data); // todo: not correct json
+    }
 
     return (
     <>
@@ -42,9 +57,10 @@ function App() {
                                   id={`answer-${index}`}
                                   type="radio"
                                   name={`answer-${index}`}
-                                  value={answer}
-                                  checked={!!answer?.checked}/>
-                              <label htmlFor={`answer-${index}`}>{answer}</label>
+                                  value={answer.text}
+                                  checked={answer.checked}
+                                  onChange={() => validate(answer, index)}/>
+                              <label htmlFor={`answer-${index}`}>{answer.text}</label>
                           </li>
                       )}
                   </ul>
