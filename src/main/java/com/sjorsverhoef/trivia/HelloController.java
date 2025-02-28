@@ -1,7 +1,5 @@
 package com.sjorsverhoef.trivia;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +15,6 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 public class HelloController {
-
-    private static final Logger LOGGER = LogManager.getLogger();
 
     @GetMapping("/")
     public ResponseEntity<String> index() throws IOException, InterruptedException {
