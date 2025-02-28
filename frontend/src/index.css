@@ -98,11 +98,10 @@ button:focus-visible {
   width: 100%;
 }
 
-
 .question_status {
   font-weight: bold;
   font-size: 1.2em;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .question_status--correct {
