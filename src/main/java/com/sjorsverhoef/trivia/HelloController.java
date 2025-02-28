@@ -2,6 +2,7 @@ package com.sjorsverhoef.trivia;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -16,8 +17,8 @@ import org.springframework.http.HttpStatus;
 @RestController
 public class HelloController {
 
-    @GetMapping("/")
-    public ResponseEntity<String> index() throws IOException, InterruptedException {
+    @GetMapping("/questions")
+    public ResponseEntity<String> questions() throws IOException, InterruptedException {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -29,6 +30,12 @@ public class HelloController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/checkanswers")
+    public ResponseEntity<String> checkanswers() throws IOException, InterruptedException {
+        // Todo: implement
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
