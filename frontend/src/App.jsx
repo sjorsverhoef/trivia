@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 function App() {
     const [questionData, setQuestionData] = useState('');
     const [answers, setAnswers] = useState([[]]);
+    const [correctAnswer, setCorrectAnswer] = useState(null);
     const [status, setStatus] = useState('not_set');
 
     const fetchAsync = async (url, method, body) => {
@@ -24,16 +25,19 @@ function App() {
         }
     }, [])
 
-    useEffect(() => {}, [setAnswers])
-
     const validate = async (answer) => {
         const formData = new FormData();
         formData.append("question", questionData.question);
 
+        if (correctAnswer) {
+            setStatus(correctAnswer === answer.text ? 'correct' : 'wrong')
+            return;
+        }
+
         try {
             const data = await fetchAsync('http://localhost:8080/checkanswer', 'POST', formData)
-            if(data.correct_answer === answer.text) setStatus('correct')
-            else setStatus('wrong')
+            setCorrectAnswer(data.correct_answer);
+            setStatus(data.correct_answer === answer.text ? 'correct' : 'wrong')
         } catch {
             setQuestionData('error')
         }
