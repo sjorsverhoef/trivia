@@ -26,12 +26,7 @@ function App() {
 
     useEffect(() => {}, [setAnswers])
 
-    const validate = async (answer, index) => {
-        const checkedAnswers = answers;
-        checkedAnswers.map((answer) => answer.checked = false);
-        checkedAnswers[index].checked = true;
-        setAnswers(checkedAnswers); // TODO: doesnt update jsx for some reason?
-
+    const validate = async (answer) => {
         const formData = new FormData();
         formData.append("question", questionData.question);
 
@@ -59,14 +54,11 @@ function App() {
                   <ul className="question_answers">
                       {answers?.map((answer, index) =>
                           <li key={`answer-${index}`}>
-                              <input
-                                  id={`answer-${index}`}
-                                  type="radio"
-                                  name={`answer-${index}`}
-                                  value={answer.text}
-                                  checked={answer.checked}
-                                  onChange={() => validate(answer, index)}/>
-                              <label htmlFor={`answer-${index}`}>{answer.text}</label>
+                              <button
+                                  className={answer.checked ? 'een' : 'twee'}
+                                  onClick={() => validate(answer)}>
+                                  {answer.text}
+                              </button>
                           </li>
                       )}
                   </ul>
