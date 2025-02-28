@@ -62,7 +62,7 @@ public class apiController {
     public ResponseEntity<String> checkanswer(@RequestParam(name = "question", required = true) String question) throws IOException, InterruptedException {
         try {
             String matchFound = repository.findByQuestion(question).getFirst().getAnswer();
-            return ResponseEntity.ok(matchFound);
+            return ResponseEntity.ok("{\"correct_answer\": \"" + matchFound +"\"}");
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
