@@ -12,8 +12,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.springframework.http.HttpStatus;
 
-
-
 @RestController
 public class apiController {
 
@@ -37,5 +35,4 @@ public class apiController {
         // Todo: implement
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 }
