@@ -24,3 +24,6 @@ assignment: [https://www.quad.team/assignment](https://www.quad.team/assignment)
 - Implement CORS
 - Fix saving data in memory (leak)
 - Sanitise user input properly
+- Classnames met hoofdletter
+- bad practice om op Exception te catchen
+- gelaagdheid inbouwen

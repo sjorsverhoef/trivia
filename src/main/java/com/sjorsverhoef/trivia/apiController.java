@@ -4,6 +4,8 @@ import com.sjorsverhoef.trivia.jpa.TriviaData;
 import com.sjorsverhoef.trivia.jpa.TriviaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +36,20 @@ public class apiController {
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            repository.save(new TriviaData("test", "test"));
 
-            return ResponseEntity.ok(response.body());
+            JSONObject responseBody = new JSONObject(response.body());
+            JSONArray responseArray  = responseBody.getJSONArray("results");
+            JSONObject responseData = responseArray.getJSONObject(0);
+
+            String question = responseData.getString("question");
+            String answer = responseData.getString("correct_answer");
+
+            repository.save(new TriviaData(question, answer));
+
+            responseData.getJSONArray("incorrect_answers").put(answer);
+            responseData.remove("correct_answer");
+
+            return ResponseEntity.ok(responseData.toString());
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
