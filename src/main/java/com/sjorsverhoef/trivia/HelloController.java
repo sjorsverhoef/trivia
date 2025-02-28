@@ -27,7 +27,7 @@ public class HelloController {
                     client.send(request, HttpResponse.BodyHandlers.ofString());
             return ResponseEntity.ok(response.body());
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
