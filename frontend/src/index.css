@@ -18,8 +18,18 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
+}
+
+ul {
+  padding: 0;
+  padding-inline-start: 0;
+}
+
+li {
+  list-style: none;
 }
 
 body {
@@ -46,23 +56,40 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.question_info {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.question_info span {
+  background-color: #646cff;
+  border-radius: 0.4em;
+  padding: 0.3em;
+}
+
+.question_answers {
+  max-width: 320px;
+  margin: 0 auto 2rem;
+  font-size: 1.5em;
+}
+
+.question_answers li {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.question_answers li input {
+  margin: 0 .5rem 0 0;
 }
