@@ -19,9 +19,9 @@ import java.net.http.HttpResponse;
 import org.springframework.http.HttpStatus;
 
 @RestController
-public class apiController {
+public class ApiController {
 
-    private static final Logger log = LogManager.getLogger(apiController.class);
+    private static final Logger log = LogManager.getLogger(ApiController.class);
 
     @Autowired
     TriviaRepository repository;
