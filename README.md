@@ -17,3 +17,10 @@ assignment: [https://www.quad.team/assignment](https://www.quad.team/assignment)
 
 #### Run tests
 - Right click src/main/java folder 'run tests' and Intellij creates a runconfig for you
+
+
+## Todo:
+
+- Implement CORS
+- Fix saving data in memory (leak)
+- Sanitise user input properly
