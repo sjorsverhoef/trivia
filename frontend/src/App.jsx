@@ -24,13 +24,13 @@ function App() {
         }
     }, [])
 
+    useEffect(() => {}, [setAnswers])
+
     const validate = async (answer, index) => {
         const checkedAnswers = answers;
         checkedAnswers.map((answer) => answer.checked = false);
         checkedAnswers[index].checked = true;
         setAnswers(checkedAnswers); // TODO: doesnt update jsx for some reason?
-
-        console.log('the question: ', questionData.question)
 
         const formData = new FormData();
         formData.append("question", questionData.question);
@@ -71,9 +71,9 @@ function App() {
                       )}
                   </ul>
                   {status !== 'not_set' &&
-                      <div class="question_status">
-                          {status === 'correct' && <span class="question_status--correct">✅ Correct !</span>}
-                          {status === 'wrong' && <span class="question_status--incorrect">❌ Wrong !</span>}
+                      <div className="question_status">
+                          {status === 'correct' && <span className="question_status--correct">✅ Correct !</span>}
+                          {status === 'wrong' && <span className="question_status--incorrect">❌ Wrong !</span>}
                       </div>
                   }
                   <button onClick={() => location.reload()}>Next question</button>
