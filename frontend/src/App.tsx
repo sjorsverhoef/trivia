@@ -1,6 +1,6 @@
 import './App.css'
 import {useEffect, useState} from "react";
-import {decodeHtml} from "./utils/utils.tsx";
+import {decodeHtml} from "./utils/utils";
 
 type QuestionResponse = {
     difficulty: string,
