@@ -1,5 +1,6 @@
 import './App.css'
 import {useEffect, useState} from "react";
+import {decodeHtml} from "./utils/utils.tsx";
 
 type QuestionResponse = {
     difficulty: string,
@@ -67,17 +68,17 @@ function App() {
                 {typeof questionData !== 'string' &&
                     <div>
                         <ul className="question_info">
-                            <li>Category: <span>{questionData.category}</span></li>
-                            <li>difficulty: <span>{questionData.difficulty}</span></li>
+                            <li>Category: <span>{decodeHtml(questionData.category)}</span></li>
+                            <li>difficulty: <span>{decodeHtml(questionData.difficulty)}</span></li>
                         </ul>
-                        <h1>{questionData.question}</h1>
+                        <h1>{decodeHtml(questionData.question)}</h1>
                         <ul className="question_answers">
                             {answers?.map((answer, index) =>
                                 <li key={`answer-${index}`}>
                                     <button
                                         className={answer.checked ? 'een' : 'twee'}
                                         onClick={() => validate(answer)}>
-                                        {answer.text}
+                                        {decodeHtml(answer.text)}
                                     </button>
                                 </li>
                             )}
