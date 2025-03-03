@@ -23,7 +23,7 @@ cd api
 - Right click src/main/java folder 'run tests' and Intellij creates a runconfig for you
 
 
-## Frontend
+## [Frontend](./frontend)
 
 ### Run locally
 
@@ -36,4 +36,8 @@ npm install
 - Run app
 ```bash
 npm run dev 
+```
+- Run tests
+```bash
+npm run test
 ```
