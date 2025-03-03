@@ -28,7 +28,6 @@ function App() {
             setQuestionData('loading')
             fetchAsync('http://localhost:8080/question', 'GET')
             .then((response: QuestionResponse) => {
-                    console.log(response)
                     setQuestionData(response);
                     setAnswers(response.incorrect_answers.map((answer) => ({text: answer, checked: false})))
                 })
