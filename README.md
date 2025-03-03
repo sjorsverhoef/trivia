@@ -1,7 +1,5 @@
 # Trivia
 
-assignment: [https://www.quad.team/assignment](https://www.quad.team/assignment)
-
 ## Todo:
 - Fix saving data in memory (leak)
 - Sanitise user input properly
