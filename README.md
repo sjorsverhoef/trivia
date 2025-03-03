@@ -3,7 +3,8 @@
 ## Todo:
 - Fix saving data in memory (leak)
 - Sanitise user input properly
-- Gelaagdheid inbouwen
+- Fix httpResponse mock in ApiControllerTest.java
+- Move logic out of ApiController.java into separate services
 
 ## [API](./api)
 

@@ -14,12 +14,10 @@ import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class ApiControllerTest {
@@ -44,7 +42,7 @@ public class ApiControllerTest {
     @Test
     public void testQuestion() throws IOException, InterruptedException, JSONException {
         String jsonResponse = "{\"results\":[{\"question\":\"What is 2+2?\",\"correct_answer\":\"4\",\"incorrect_answers\":[\"3\",\"5\",\"6\"]}]}";
-        when(httpClient.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class))).thenReturn(httpResponse);
+//      // FIXME: [sv 03-03-2025] httpResponse mock is not working properly, test will fail
         when(httpResponse.body()).thenReturn(jsonResponse);
 
         ResponseEntity<String> response = apiController.question();
@@ -60,7 +58,7 @@ public class ApiControllerTest {
     @Test
     public void testQuestionInvalidJsonResponse() throws IOException, InterruptedException {
         String invalidJsonResponse = "invalid json";
-        when(httpClient.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class))).thenReturn(httpResponse);
+        // FIXME: [sv 03-03-2025] httpResponse mock is not working properly, test could fail
         when(httpResponse.body()).thenReturn(invalidJsonResponse);
 
         ResponseEntity<String> response = apiController.question();
