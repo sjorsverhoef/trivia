@@ -1,10 +1,12 @@
 # Trivia
 
 ## Todo:
-- Fix saving data in memory (leak)
+- Fix saving data in memory (leak) by removing need for backend storage
 - Sanitise user input properly
 - Fix httpResponse mock in ApiControllerTest.java
 - Move logic out of ApiController.java into separate services
+- Randomise options from backend
+- Cleanup backend response
 
 ## [API](./api)
 
